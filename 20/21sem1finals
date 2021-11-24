@@ -1,0 +1,121 @@
+// 4
+/*
+function accumulate_iter(f, init, xs) {
+    const r = reverse(xs);
+    function iter(current_total, lst){
+        return is_null(lst) ? 
+            current_total : 
+            iter(f(head(lst), current_total), tail(lst));
+    }
+    return iter(init, r);
+}
+
+//accumulate_iter( (x, y) => x / y, 2, list(24, 16, 8) );
+
+// 7
+function hoopify(xs) {
+    const ys = copy(xs);
+    set_tail(last_pair(ys), ys);
+    return ys;
+}
+
+// 8
+function partially_hoopify(xs, m){
+    if (m === 0){
+        return hoopify(xs);
+    } else {
+        return pair(head(xs), hoopify(tail(xs), m - 1));
+    }
+}
+
+// 9
+
+// hh1
+set_head(h1, h1);
+set_tail(h1, h1);
+
+// hh2
+const hh21 = pair(hh21, hh2);
+set_head(hh2, hh21);
+set_tail(hh2, hh2);
+
+// hh3
+const hh31 = pair(hh3, hh3);
+set_head(hh3, hh31);
+set_tail(hh3, hh31);
+
+// 10
+function is_hula_hoop(x){
+    let mem = null;
+    function scan(xs){
+        if (!is_pair(xs)){
+            return false;
+        } else if (is_null(member(xs, mem))){
+            mem = pair(xs, mem);
+            return scan(tail(xs)) && scan(head(xs));
+        } else {
+            return true;
+        }
+    }
+    return scan(x);
+}
+
+// 11
+function identity(n){
+    let A = [];
+    for (let i = 0; i < n; i = i + 1){
+        A[i] = [];
+        for (let j = 0; j < n; j = j + 1){
+            A[i][j] = i === j ? 1 : 0;
+        }
+    }
+    return A;
+}
+*/
+// 12 
+function zip_array(arr1, arr2){
+    const n = array_length(arr1) * 2;
+    let A = [];
+    for (let i = 0; i < n; i = i + 1){
+        if (i % 2 === 0){
+            A[i] = arr1[i/2];
+        } else {
+            A[i] = arr2[(i - 1)/2];
+        }
+    }
+    return A;
+}
+
+// 13
+function unzip_array(arr){
+    let arr1 = [];
+    let arr2 = [];
+    for (let i = 0; i < array_length(arr); i = i + 1){
+        if (i % 2 === 0){
+            arr1[i/2] = arr[i];
+        } else {
+            arr2[(i - 1)/2] = arr[i];
+        }
+    }
+    return pair(arr1, arr2);
+}
+
+
+// 14
+const factorials =
+    pair(1, (s, i) => pair(i * head(s), tail(factorials)));
+    // fill the following line, only using the names
+    // pair, head, tail, factorials, s, i
+    /* YOUR SOLUTION */
+
+// 15
+
+const pi_square_series =
+    pair(0, (s, i) => pair(6/(i*i) + head(s), tail(pi_square_series)));
+    // fill the following line, only using the names
+    // pair, head, tail, pi_square_series, s, i
+    /* YOUR SOLUTION */
+
+// 16
+//tail(tail(s1)(s2, null))(s3, null);
+
